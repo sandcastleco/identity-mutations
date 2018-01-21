@@ -7,7 +7,7 @@ require 'recipe/laravel.php';
 set('application', 'identity_mutations');
 
 // Project repository
-set('repository', 'sandcastle@107.170.255.158:sandcastle/identity-mutations.git');
+set('repository', 'git@github.com:sandcastleco/identity-mutations.git');
 
 // [Optional] Allocate tty for git clone. Default value is false.
 set('git_tty', true);
@@ -22,8 +22,9 @@ add('writable_dirs', []);
 
 // Hosts
 
-host('project.com')
-    ->set('deploy_path', '~/{{application}}');
+host('107.170.255.158')
+    ->user('sandcastle')
+    ->set('deploy_path', '/var/www/identity-mutations');
 
 // Tasks
 
