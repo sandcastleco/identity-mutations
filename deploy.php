@@ -6,6 +6,8 @@ require 'recipe/laravel.php';
 // Project name
 set('application', 'identity_mutations');
 
+set('user', 'kmcgillivray');
+
 // Project repository
 set('repository', 'git@github.com:sandcastleco/identity-mutations.git');
 
