@@ -12,5 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  return view('page', ['title' => 'Gallery']);
+});
+
+Route::get('/about', function () {
+  return view('page', ['title' => 'About']);
+});
+
+Route::get('/contact', function () {
+  return view('page', ['title' => 'Contact']);
 });
