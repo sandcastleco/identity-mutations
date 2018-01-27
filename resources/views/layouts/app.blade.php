@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Identity Mutations</title>
-    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.9.1/css/tachyons.min.css"/>
+    {{-- <link rel="stylesheet" href="https://unpkg.com/tachyons@4.9.1/css/tachyons.min.css"/> --}}
   </head>
   <body class="avenir bg-moon-gray">
     <header>
@@ -20,6 +20,7 @@
     </header>
 
     <div role="main">
+      @yield('header')
       @yield('content')
     </div>
 

@@ -12,7 +12,12 @@
 */
 
 Route::get('/', function () {
-  return view('page', ['title' => 'Gallery']);
+
+  $artworks = DB::table('artworks')->get();
+  return view('gallery.index', [
+    'title' => 'Gallery',
+    'artworks' => $artworks
+  ]);
 });
 
 Route::get('/about', function () {
