@@ -20,6 +20,14 @@
     </header>
 
     <div role="main">
+      @if (Auth::check())
+        <form method="POST" action="/logout">
+          {{ csrf_field() }}
+          <button type="submit">Log out</button>
+        </form>
+      @else
+        <a href="/login">Log in</a>
+      @endif
       @yield('header')
       @yield('content')
     </div>

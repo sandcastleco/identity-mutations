@@ -13,6 +13,8 @@
 
 
 Route::get('/', 'ArtworksController@index');
+Route::get('/artwork/create', 'ArtworksController@create')->middleware('auth');;
+Route::post('/artworks', 'ArtworksController@store')->middleware('auth');;
 
 Route::get('/about', function () {
   return view('page', ['title' => 'About']);
