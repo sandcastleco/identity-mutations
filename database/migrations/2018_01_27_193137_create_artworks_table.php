@@ -14,11 +14,12 @@ class CreateArtworksTable extends Migration
     public function up()
     {
         Schema::create('artworks', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('title');
-            $table->text('description');
-            $table->decimal('price', 40, 2);
-            $table->timestamps();
+          $table->increments('id');
+          $table->string('title');
+          $table->text('description');
+          $table->decimal('price', 40, 2);
+          $table->boolean('sold')->default(false);
+          $table->timestamps();
         });
     }
 

@@ -11,14 +11,8 @@
 |
 */
 
-Route::get('/', function () {
 
-  $artworks = DB::table('artworks')->get();
-  return view('gallery.index', [
-    'title' => 'Gallery',
-    'artworks' => $artworks
-  ]);
-});
+Route::get('/', 'ArtworksController@index');
 
 Route::get('/about', function () {
   return view('page', ['title' => 'About']);
