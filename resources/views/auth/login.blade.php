@@ -1,69 +1,41 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+  <h1 class="mt0 tc">Login</h1>
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
+  <form class="mw6 center ph3" method="POST" action="{{ route('login') }}">
+    {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+    <div class="mb3">
+      <label class="db mb1" for="email">E-mail address</label>
+      <input id="email" type="email" class="db w-100 pa2 marvel" name="email" value="{{ old('email') }}" required autofocus>
+      @if ($errors->has('email'))
+        <span class="help-block">
+          <strong>{{ $errors->first('email') }}</strong>
+        </span>
+      @endif
     </div>
-</div>
+
+    <div class="mb3">
+      <label class="db mb1" for="password">Password</label>
+      <input id="password" type="password" class="db w-100 pa2 marvel" name="password" required>
+      @if ($errors->has('password'))
+        <span class="help-block">
+          <strong>{{ $errors->first('password') }}</strong>
+        </span>
+      @endif
+    </div>
+
+    <div class="mb2">
+      <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+    </div>
+
+    <button type="submit" class="marvel pointer dib mt2 ph3 pv2 link ims-black ba b--ims-black bg-transparent ttu tracked">
+      Login
+    </button>
+
+    <a class="db mv3 link ims-black" href="{{ route('password.request') }}">
+      Forgot Your Password?
+    </a>
+  </form>
 @endsection
