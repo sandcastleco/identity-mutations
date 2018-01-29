@@ -25,6 +25,7 @@
           {{ csrf_field() }}
           <button type="submit">Log out</button>
         </form>
+        <a href="/artwork/create">New Artwork</a>
       @else
         <a href="/login">Log in</a>
       @endif

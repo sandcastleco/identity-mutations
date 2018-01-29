@@ -20,7 +20,7 @@ class ArtworksController extends Controller
     public function create()
     {
       $this->middleware('auth');
-      return view('artworks.create', ['title' => 'Create a post']);
+      return view('artworks.create', ['title' => 'New Artwork']);
     }
 
     public function store()
@@ -35,5 +35,11 @@ class ArtworksController extends Controller
 
       return redirect('/');
 
+    }
+
+    public function edit($id)
+    {
+      $artwork = Artwork::find($id);
+      return view('artworks.edit', ['artwork' => $artwork, 'title' => 'Edit Artwork']);
     }
 }
