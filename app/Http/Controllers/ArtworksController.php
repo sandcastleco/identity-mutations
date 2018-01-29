@@ -17,6 +17,14 @@ class ArtworksController extends Controller
       ]);
     }
 
+    public function show($id) {
+      $artwork = Artwork::find($id);
+      return view('artworks.show', [
+        'title' => 'Inquire about ' . $artwork->title,
+        'artwork' => $artwork
+      ]);
+    }
+
     public function create()
     {
       return view('artworks.create', ['title' => 'New Artwork']);
@@ -24,7 +32,7 @@ class ArtworksController extends Controller
 
     public function store()
     {
-      
+
       $this->validate(request(), [
         'title' => 'required'
       ]);

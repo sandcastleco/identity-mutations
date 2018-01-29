@@ -2,8 +2,6 @@
 
 @section('content')
 
-  <h2>Edit me</h2>
-
   <form method="POST" action="/artwork/{{ $artwork->id }}">
 
     {{ csrf_field() }}
