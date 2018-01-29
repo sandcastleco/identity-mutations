@@ -2,10 +2,12 @@
 
 @section('content')
 
+  @include('partials.errors')
+
   <form method="POST" action="/artworks">
 
     {{ csrf_field() }}
-    
+
     <label for="title">Title</label>
     <input type="text" id="title" name="title">
 

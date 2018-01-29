@@ -19,13 +19,16 @@ class ArtworksController extends Controller
 
     public function create()
     {
-      $this->middleware('auth');
       return view('artworks.create', ['title' => 'New Artwork']);
     }
 
     public function store()
     {
-      $this->middleware('auth');
+      
+      $this->validate(request(), [
+        'title' => 'required'
+      ]);
+
       $artwork = new Artwork;
 
       $artwork->title = request('title');
