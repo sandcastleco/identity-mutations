@@ -8,6 +8,11 @@
       <p>${{ $artwork->price }}</p>
       @if (Auth::check())
         <a href="/artwork/{{ $artwork->id }}/edit">Edit</a>
+        <form method="POST" action="/artwork/{{ $artwork->id }}">
+          {{ csrf_field() }}
+          {{ method_field('DELETE') }}
+          <button type="submit">Delete</button>
+        </form>
       @endif
     </div>
   @endforeach

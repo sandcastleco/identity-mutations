@@ -42,4 +42,24 @@ class ArtworksController extends Controller
       $artwork = Artwork::find($id);
       return view('artworks.edit', ['artwork' => $artwork, 'title' => 'Edit Artwork']);
     }
+
+    public function update($id)
+    {
+      $artwork = Artwork::find($id);
+
+      $artwork->title = request('title');
+      $artwork->description = request('description');
+      $artwork->price = request('price');
+      $artwork->update();
+
+      return redirect('/');
+    }
+
+    public function destroy($id)
+    {
+      $artwork = Artwork::find($id);
+      $artwork->delete();
+      return redirect('/');
+    }
+
 }
