@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('admin')
 
-@section('content')
+@section('main')
   <h1 class="mt0 tc">Login</h1>
 
   <form class="mw6 center ph3" method="POST" action="{{ route('login') }}">
@@ -8,7 +8,7 @@
 
     <div class="mb3">
       <label class="db mb1" for="email">E-mail address</label>
-      <input id="email" type="email" class="db w-100 pa2 marvel" name="email" value="{{ old('email') }}" required autofocus>
+      <input id="email" type="email" class="db w-100 pa2 marvel ba b--ims-gray" name="email" value="{{ old('email') }}" required autofocus>
       @if ($errors->has('email'))
         <span class="help-block">
           <strong>{{ $errors->first('email') }}</strong>
@@ -18,7 +18,7 @@
 
     <div class="mb3">
       <label class="db mb1" for="password">Password</label>
-      <input id="password" type="password" class="db w-100 pa2 marvel" name="password" required>
+      <input id="password" type="password" class="db w-100 pa2 marvel ba b--ims-gray" name="password" required>
       @if ($errors->has('password'))
         <span class="help-block">
           <strong>{{ $errors->first('password') }}</strong>
