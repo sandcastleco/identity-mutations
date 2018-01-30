@@ -60,12 +60,19 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
-/******/ ({
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
 
-/***/ 10:
+__webpack_require__(1);
+module.exports = __webpack_require__(2);
+
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports) {
 
 
@@ -94,16 +101,17 @@
 var animationTiming = 1000;
 var $panels = $('.panel');
 var $currentPanel = $('.show');
+var $body = $('body');
 
 showPanelBody($currentPanel);
 
-function showPanelBody(panel, delay) {
+function showPanelBody(panel, delay, cb) {
   var delay = delay || 0;
   var panelBody = panel.find('.panel-body');
   panelBody.show(delay, function () {
     panelBody.animate({
       opacity: "1"
-    }, animationTiming);
+    }, animationTiming, cb);
   });
 }
 
@@ -119,32 +127,24 @@ function hidePanelBody(panel, cb) {
 
 $panels.click(function () {
   var $newPanel = $(this);
-  if (!$newPanel.hasClass('show')) {
+  if (!$newPanel.hasClass('show') && !$body.hasClass('active')) {
+    $body.addClass('active');
     hidePanelBody($currentPanel, function () {
       $currentPanel.removeClass('show');
       $newPanel.addClass('show');
-      showPanelBody($newPanel, animationTiming);
+      showPanelBody($newPanel, animationTiming, function () {
+        $body.removeClass('active');
+      });
       $currentPanel = $newPanel;
     });
   }
 });
 
 /***/ }),
-
-/***/ 42:
+/* 2 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
-/***/ }),
-
-/***/ 9:
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(10);
-module.exports = __webpack_require__(42);
-
-
 /***/ })
-
-/******/ });
+/******/ ]);
