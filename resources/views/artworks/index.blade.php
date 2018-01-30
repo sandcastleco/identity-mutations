@@ -1,7 +1,7 @@
 @extends('page')
 
 @section('content')
-  <div class="flex-ns flex-wrap">
+  <div class="flex-ns flex-wrap center">
   @foreach ($artworks as $artwork)
     <div class="w-25-ns ph3-ns mb4">
       <div class="w-100 h5 bg-gray"></div>

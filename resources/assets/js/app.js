@@ -5,9 +5,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
-
-window.Vue = require('vue');
+// require('./bootstrap');
+//
+// window.Vue = require('vue');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -15,8 +15,46 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+// Vue.component('example-component', require('./components/ExampleComponent.vue'));
+//
+// const app = new Vue({
+//     el: '#app'
+// });
 
-const app = new Vue({
-    el: '#app'
+var animationTiming = 1000;
+var $panels = $('.panel');
+var $currentPanel = $('.show');
+
+showPanelBody($currentPanel);
+
+function showPanelBody(panel, delay) {
+  var delay = delay || 0;
+  var panelBody = panel.find('.panel-body');
+  panelBody.show(delay, function() {
+    panelBody.animate({
+      opacity: "1"
+    }, animationTiming);
+  });
+}
+
+function hidePanelBody(panel, cb) {
+  var panelBody = panel.find('.panel-body');
+  panelBody.animate({
+    opacity: "0"
+  }, animationTiming / 2, function() {
+    panelBody.hide();
+    cb();
+  });
+}
+
+$panels.click(function() {
+  var $newPanel = $(this);
+  if (!$newPanel.hasClass('show')) {
+    hidePanelBody($currentPanel, function() {
+      $currentPanel.removeClass('show');
+      $newPanel.addClass('show');
+      showPanelBody($newPanel, animationTiming);
+      $currentPanel = $newPanel;
+    });
+  }
 });

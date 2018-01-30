@@ -8,16 +8,16 @@
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.9.1/css/tachyons.min.css"/>
     <link rel="stylesheet" href="/css/app.css">
   </head>
-  <body class="marvel bg-moon-gray pb4">
-    <header class="mh3 pv3">
-      <a class="db mb3 f1 link white" href="/">IM<span class="ims-black">(S)</span></a>
-      <nav role="navigation">
+  <body class="marvel bg-moon-gray">
+    <header class="vh-10 flex items-center ph3">
+      <a class="db f1 link white" href="/">IM<span class="ims-black">(S)</span></a>
+      {{-- <nav role="navigation">
         <ul class="list mv0 pl0">
           <li class="mb2 pa2 bg-white-10 tr bl b--gray bw1"><a class="link gray" href="/about">About</a></li>
           <li class="mb2 pa2 bg-white-10 tr bl b--gray bw1"><a class="link gray" href="/contact">Contact</a></li>
           <li class="mb2 pa2 bg-white-10 tr bl b--gray bw1"><a class="link gray" href="/">Gallery</a></li>
         </ul>
-      </nav>
+      </nav> --}}
 
       @if (Auth::check())
         @include('partials.logout-button')
@@ -25,9 +25,35 @@
       @endif
     </header>
 
-    <div class="mw8 center mh3 pa3 bg-white-20 bl bw1" role="main">
-      @yield('header')
-      @yield('content')
+    <div class="vh-80" role="main">
+      <div class="grid">
+        <div class="panel bg-white-20 bb bw1 mr2">
+          <div class="panel-header">
+            <a href="#">About</a>
+          </div>
+          <div class="panel-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eleifend, est quis molestie sodales, leo risus malesuada sem, eu tempus lacus orci ut velit. Mauris iaculis elit ac erat blandit, quis fringilla purus ornare. Pellentesque vitae interdum nunc. Vestibulum rhoncus enim non mollis consequat. Proin nunc tellus, finibus id tortor nec, varius malesuada massa. Ut placerat lacus id nisl egestas lobortis. In mattis at elit sed feugiat. In quis arcu rutrum velit viverra facilisis sed a orci. Mauris sed ex quis justo fringilla iaculis id eget elit. Etiam porta dolor a leo ultricies tempus. Cras faucibus ex pulvinar, feugiat est eu, vestibulum dui. Fusce at malesuada lectus. Suspendisse sit amet egestas ligula. Duis sit amet lacinia ligula, ut condimentum neque.</p>
+          </div>
+        </div>
+        <div class="panel bg-white-20 bb bw1 mr2">
+          <div class="panel-header">
+            <a href="#">Contact</a>
+          </div>
+          <div class="panel-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eleifend, est quis molestie sodales, leo risus malesuada sem, eu tempus lacus orci ut velit. Mauris iaculis elit ac erat blandit, quis fringilla purus ornare. Pellentesque vitae interdum nunc. Vestibulum rhoncus enim non mollis consequat. Proin nunc tellus, finibus id tortor nec, varius malesuada massa. Ut placerat lacus id nisl egestas lobortis. In mattis at elit sed feugiat. In quis arcu rutrum velit viverra facilisis sed a orci. Mauris sed ex quis justo fringilla iaculis id eget elit. Etiam porta dolor a leo ultricies tempus. Cras faucibus ex pulvinar, feugiat est eu, vestibulum dui. Fusce at malesuada lectus. Suspendisse sit amet egestas ligula. Duis sit amet lacinia ligula, ut condimentum neque.</p>
+          </div>
+        </div>
+        <div class="panel bg-white-20 bb bw1 show">
+          <div class="panel-header">
+            <a href="#">Gallery</a>
+          </div>
+          <div class="panel-body w-100">
+            @yield('content')
+          </div>
+        </div>
+      </div>
+      {{-- @yield('header')
+      @yield('content') --}}
     </div>
 
     @include('partials.footer')
