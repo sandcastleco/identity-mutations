@@ -1,29 +1,20 @@
-.grid {
-  display: flex;
-}
 .panel {
-  display: flex;
+}
+.panel.js {
   width: 50px;
-  height: 80vh;
   transition: 1s width;
 }
 .panel-header {
   width: 50px;
-  padding: 20px;
+  padding: 15px;
 }
-.panel-header a {
-  display: block;
+.panel-header h2 {
   transform: rotate(90deg);
-  text-decoration: none;
-  text-align: right;
 }
 .panel-body {
   padding: 20px;
-  display: none;
-  opacity: 0;
-  overflow: scroll;
 }
-.show {
+.panel.show {
   flex-grow: 1;
   max-width: 100%;
   width: 100%;

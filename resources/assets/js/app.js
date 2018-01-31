@@ -1,32 +1,19 @@
-
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
-// require('./bootstrap');
-//
-// window.Vue = require('vue');
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-// Vue.component('example-component', require('./components/ExampleComponent.vue'));
-//
-// const app = new Vue({
-//     el: '#app'
-// });
-
 var animationTiming = 1000;
 var $panels = $('.panel');
+var $panelBodies = $('.panel-body');
+var $container = $('.panel-container');
 var $currentPanel = $('.show');
 var $body = $('body');
 
-showPanelBody($currentPanel);
+function initStyles() {
+  $container.addClass('flex vh-80');
+  $panels.addClass('js');
+  $panelBodies.hide().css({
+    'opacity': 0,
+    'overflow': 'scroll'
+  }).addClass('vh-80');
+  showPanelBody($currentPanel);
+}
 
 function showPanelBody(panel, delay, cb) {
   var delay = delay || 0;
@@ -34,7 +21,7 @@ function showPanelBody(panel, delay, cb) {
   panelBody.show(delay, function() {
     panelBody.animate({
       opacity: "1"
-    }, animationTiming, cb);
+    }, animationTiming / 2, cb);
   });
 }
 
@@ -48,7 +35,7 @@ function hidePanelBody(panel, cb) {
   });
 }
 
-$panels.click(function() {
+function togglePanel() {
   var $newPanel = $(this);
   if (!$newPanel.hasClass('show') && !$body.hasClass('active')) {
     $body.addClass('active');
@@ -61,4 +48,9 @@ $panels.click(function() {
       $currentPanel = $newPanel;
     });
   }
+}
+
+$(document).ready(function() {
+  initStyles();
+  $panels.click(togglePanel);
 });

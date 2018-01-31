@@ -27,7 +27,7 @@
       @endif
     </header>
 
-    <div class="vh-80" role="main">
+    <div role="main">
       @yield('content')
       {{-- @yield('header')
       @yield('content') --}}

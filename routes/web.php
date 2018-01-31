@@ -23,14 +23,6 @@ Route::get('/artwork/{id}/edit', 'ArtworksController@edit')->middleware('auth');
 Route::post('/artwork/{id}/inquiry', 'InquiriesController@send');
 Route::get('/thank-you', 'InquiriesController@confirm');
 
-Route::get('/about', function () {
-  return view('page', ['title' => 'About']);
-});
-
-Route::get('/contact', function () {
-  return view('page', ['title' => 'Contact']);
-});
-
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
