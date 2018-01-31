@@ -6,7 +6,7 @@
     @if(isset($wide))
       {{ $slot }}
     @else
-      <div class="mw7 center">
+      <div class="mw6 center">
         {{ $slot }}
       </div>
     @endif

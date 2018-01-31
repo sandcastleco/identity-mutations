@@ -20,6 +20,10 @@ Route::put('/artwork/{id}', 'ArtworksController@update')->middleware('auth');
 Route::delete('/artwork/{id}', 'ArtworksController@destroy')->middleware('auth');
 Route::get('/artwork/{id}/edit', 'ArtworksController@edit')->middleware('auth');
 
+Route::get('/settings', 'SettingsController@edit')->middleware('auth');
+Route::post('/settings', 'SettingsController@store')->middleware('auth');
+Route::put('/settings', 'SettingsController@update')->middleware('auth');
+
 Route::post('/artwork/{id}/inquiry', 'InquiriesController@sendInquiry');
 Route::post('/contact', 'InquiriesController@sendMessage');
 Route::get('/thank-you', 'InquiriesController@confirm');
@@ -27,6 +31,7 @@ Route::get('/thank-you', 'InquiriesController@confirm');
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
 
 // Registration Routes...
 // Disabled
