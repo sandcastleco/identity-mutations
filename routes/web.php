@@ -20,7 +20,8 @@ Route::put('/artwork/{id}', 'ArtworksController@update')->middleware('auth');
 Route::delete('/artwork/{id}', 'ArtworksController@destroy')->middleware('auth');
 Route::get('/artwork/{id}/edit', 'ArtworksController@edit')->middleware('auth');
 
-Route::post('/artwork/{id}/inquiry', 'InquiriesController@send');
+Route::post('/artwork/{id}/inquiry', 'InquiriesController@sendInquiry');
+Route::post('/contact', 'InquiriesController@sendMessage');
 Route::get('/thank-you', 'InquiriesController@confirm');
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
