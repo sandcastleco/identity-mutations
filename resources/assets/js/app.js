@@ -15,6 +15,8 @@ function initStyles() {
   showPanelBody($currentPanel);
 }
 
+initStyles();
+
 function showPanelBody(panel, delay, cb) {
   var delay = delay || 0;
   var panelBody = panel.find('.panel-body');
@@ -51,6 +53,5 @@ function togglePanel() {
 }
 
 $(document).ready(function() {
-  initStyles();
   $panels.click(togglePanel);
 });
