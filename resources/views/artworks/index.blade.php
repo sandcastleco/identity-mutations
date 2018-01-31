@@ -16,7 +16,11 @@
           <p>{{ $artwork->description }}</p>
         @endif
         <p>{{ number_format($artwork->price, 0, '.', ',') }} USD</p>
-        <a class="db tc ttu tracked mt2 ph3 pv2 link ims-black ba b--ims-black f4" href="/artwork/{{ $artwork->id }}">Inquire</a>
+        @if ($artwork->sold)
+          <p class="db tc ttu tracked mt2 mb0 ph3 pv2 link ims-gray ba b--ims-gray f4">Sold</p>
+        @else
+          <a class="db tc ttu tracked mt2 ph3 pv2 link ims-black ba b--ims-black f4" href="/artwork/{{ $artwork->id }}">Inquire</a>
+        @endif
         @if (Auth::check())
           <div class="tc">
             <a class="dib mr2 ph3 pv2 tc ttu tracked link ims-black ba b--ims-black" href="/artwork/{{ $artwork->id }}/edit">Edit</a>

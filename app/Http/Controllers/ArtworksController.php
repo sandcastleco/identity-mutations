@@ -39,9 +39,14 @@ class ArtworksController extends Controller
 
       $artwork = new Artwork;
 
+      if (!request()->has('sold')) {
+        request()->merge(['sold' => 0]);
+      }
+
       $artwork->title = request('title');
       $artwork->description = request('description');
       $artwork->price = request('price');
+      $artwork->sold = request('sold');
       $artwork->save();
 
       return redirect('/');
@@ -58,9 +63,14 @@ class ArtworksController extends Controller
     {
       $artwork = Artwork::find($id);
 
+      if (!request()->has('sold')) {
+        request()->merge(['sold' => 0]);
+      }
+      
       $artwork->title = request('title');
       $artwork->description = request('description');
       $artwork->price = request('price');
+      $artwork->sold = request('sold');
       $artwork->update();
 
       return redirect('/');

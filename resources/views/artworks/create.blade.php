@@ -23,6 +23,10 @@
       <input class="db w-100 pa2 marvel ba b--ims-gray" type="number" id="price" name="price">
     </div>
 
+    <div class="mb3">
+      <input type="checkbox" name="sold" value="1"> Sold
+    </div>
+
     <button class="marvel pointer dib mt2 ph3 pv2 link ims-black ba b--ims-black bg-transparent ttu tracked" type="submit">Create</button>
   </form>
 
