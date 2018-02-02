@@ -10,9 +10,8 @@ if ($(window).width() > 480) {
     $container.addClass('flex vh-80');
     $panels.addClass('js');
     $panelBodies.hide().css({
-      'opacity': 0,
-      'overflow': 'scroll'
-    }).addClass('vh-80');
+      'opacity': 0
+    });
     showPanelBody($currentPanel);
   }
 

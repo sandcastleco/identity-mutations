@@ -60,6 +60,10 @@
   }
 }
 
+.panel {
+  overflow: scroll;
+}
+
 .panel.js {
   width: 50px;
   -webkit-transition: 1s width;

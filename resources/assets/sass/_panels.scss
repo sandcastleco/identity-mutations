@@ -1,3 +1,6 @@
+.panel {
+  overflow: scroll;
+}
 .panel.js {
   width: 50px;
   transition: 1s width;
