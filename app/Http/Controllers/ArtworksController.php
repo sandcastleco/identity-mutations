@@ -41,6 +41,7 @@ class ArtworksController extends Controller
       $file = request()->file('image');
       if (isset($file)) {
         $path = $file->store('artwork');
+        $artwork->image = $path;
       }
 
       if (!request()->has('sold')) {
@@ -51,7 +52,6 @@ class ArtworksController extends Controller
       $artwork->description = request('description');
       $artwork->price = request('price');
       $artwork->sold = request('sold');
-      $artwork->image = $path;
       $artwork->save();
 
       return redirect('/');
