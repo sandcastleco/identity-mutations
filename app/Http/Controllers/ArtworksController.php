@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use App\Artwork;
 
 class ArtworksController extends Controller
@@ -50,8 +51,14 @@ class ArtworksController extends Controller
       $artwork->price = request('price');
       $artwork->sold = request('sold');
       if (isset($file)) {
-        $path = $file->store('artwork');
-        $artwork->image = $path;
+        $filename  = 'artwork/' . time() . '.jpg';
+        $image = Image::make($file->getRealPath());
+        $image->resize(800, null, function ($constraint) {
+          $constraint->aspectRatio();
+          $constraint->upsize();
+        });
+        $image->save('storage/'. $filename);
+        $artwork->image = $filename;
       }
       $artwork->save();
 
@@ -83,8 +90,14 @@ class ArtworksController extends Controller
         if ($artwork->image) {
           Storage::delete($artwork->image);
         }
-        $path = $file->store('artwork');
-        $artwork->image = $path;
+        $filename  = 'artwork/' . time() . '.jpg';
+        $image = Image::make($file->getRealPath());
+        $image->resize(800, null, function ($constraint) {
+          $constraint->aspectRatio();
+          $constraint->upsize();
+        });
+        $image->save('storage/'. $filename);
+        $artwork->image = $filename;
       }
       $artwork->update();
 
