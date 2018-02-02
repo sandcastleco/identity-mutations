@@ -2,7 +2,7 @@
 
 @section('main')
 
-  <form method="POST" action="/artwork/{{ $artwork->id }}">
+  <form method="POST" action="/artwork/{{ $artwork->id }}" enctype="multipart/form-data">
 
     {{ csrf_field() }}
 
@@ -21,6 +21,22 @@
     <div class="mb3">
       <label class="db mb1" for="price">Price</label>
       <input class="db w-100 pa2 marvel ba b--ims-gray" type="number" id="price" name="price" value="{{ $artwork->price }}">
+    </div>
+
+    <div class="flex-ns">
+      <div class="mb3 pr3">
+        @if ($artwork->image)
+          <p class="mt0 mb1">Current image</p>
+          <img class="mw4" src="{{ asset('storage/' . $artwork->image)}}" alt="{{ $artwork->title }}">
+        @else
+          <p class="mv0">No current image</p>
+        @endif
+      </div>
+
+      <div class="mb3">
+        <label class="db mb1" for="image">New image</label>
+        <input class="db w-100 pa2 marvel ba b--ims-gray" type="file" id="image" name="image">
+      </div>
     </div>
 
     <div class="mb3">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Artwork;
 
 class ArtworksController extends Controller
@@ -39,10 +40,6 @@ class ArtworksController extends Controller
       $artwork = new Artwork;
 
       $file = request()->file('image');
-      if (isset($file)) {
-        $path = $file->store('artwork');
-        $artwork->image = $path;
-      }
 
       if (!request()->has('sold')) {
         request()->merge(['sold' => 0]);
@@ -52,6 +49,10 @@ class ArtworksController extends Controller
       $artwork->description = request('description');
       $artwork->price = request('price');
       $artwork->sold = request('sold');
+      if (isset($file)) {
+        $path = $file->store('artwork');
+        $artwork->image = $path;
+      }
       $artwork->save();
 
       return redirect('/');
@@ -72,10 +73,19 @@ class ArtworksController extends Controller
         request()->merge(['sold' => 0]);
       }
 
+      $file = request()->file('image');
+
       $artwork->title = request('title');
       $artwork->description = request('description');
       $artwork->price = request('price');
       $artwork->sold = request('sold');
+      if (isset($file)) {
+        if ($artwork->image) {
+          Storage::delete($artwork->image);
+        }
+        $path = $file->store('artwork');
+        $artwork->image = $path;
+      }
       $artwork->update();
 
       return redirect('/');
@@ -84,7 +94,10 @@ class ArtworksController extends Controller
     public function destroy($id)
     {
       $artwork = Artwork::find($id);
+
+      Storage::delete($artwork->image);
       $artwork->delete();
+
       return redirect('/');
     }
 

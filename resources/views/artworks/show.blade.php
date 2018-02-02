@@ -8,7 +8,7 @@
     @endslot
 
     @if($artwork->image)
-      <img src="{{ asset('storage/' . $artwork->image)}}">
+      <img src="{{ asset('storage/' . $artwork->image)}}" alt="{{ $artwork->title }}">
     @else
       <div class="w-100 h5 bg-gray"></div>
     @endif

@@ -11,7 +11,7 @@
     @foreach ($artworks as $artwork)
       <div class="w-25-ns ph3-ns mb4">
         @if($artwork->image)
-          <img src="{{ asset('storage/' . $artwork->image)}}">
+          <a href="/artwork/{{ $artwork->id }}"><img style="object-fit: cover;" class="h5 w-100" src="{{ asset('storage/' . $artwork->image)}}" alt="{{ $artwork->title }}"></a>
         @else
           <div class="w-100 h5 bg-gray"></div>
         @endif
