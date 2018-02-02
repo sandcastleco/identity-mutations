@@ -1,4 +1,4 @@
-@component('components.panel', ['classes' => 'mr2'])
+@component('components.panel', ['classes' => 'mr2-ns'])
   @slot('title')
     About
   @endslot
@@ -14,7 +14,7 @@
   @endif
 @endcomponent
 
-@component('components.panel', ['classes' => 'mr2'])
+@component('components.panel', ['classes' => 'mr2-ns'])
   @slot('title')
     Contact
   @endslot

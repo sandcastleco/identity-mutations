@@ -2,7 +2,7 @@
 
 @section('main')
 
-  @component('components.panel', ['classes' => 'show order-3', 'wide' => true])
+  @component('components.panel', ['classes' => 'show order-last-ns', 'wide' => true])
     @slot('title')
       Gallery
     @endslot

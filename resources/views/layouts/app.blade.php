@@ -9,18 +9,11 @@
     <link rel="stylesheet" href="/css/app.css">
   </head>
   <body style="background-image: url('{{ asset('images/background.jpg') }}');" class="marvel bg-moon-gray cover">
-    <header class="vh-10 flex justify-between items-center ph3">
+    <header class="vh-10-ns flex-ns justify-between items-center pb3 pb0-ns ph3">
       <a class="db f1 link white" href="/">IM<span class="ims-black">(S)</span></a>
-      {{-- <nav role="navigation">
-        <ul class="list mv0 pl0">
-          <li class="mb2 pa2 bg-white-10 tr bl b--gray bw1"><a class="link gray" href="/about">About</a></li>
-          <li class="mb2 pa2 bg-white-10 tr bl b--gray bw1"><a class="link gray" href="/contact">Contact</a></li>
-          <li class="mb2 pa2 bg-white-10 tr bl b--gray bw1"><a class="link gray" href="/">Gallery</a></li>
-        </ul>
-      </nav> --}}
 
       @if (Auth::check())
-        <div style="flex-grow: 1;" class="tr">
+        <div style="flex-grow: 1;" class="tc tr-ns">
           <a class="dib mr2 ph3 pv2 tc ttu tracked link ims-black ba b--ims-black" href="/artwork/create">New Artwork</a>
           @include('partials.logout-button')
         </div>
