@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="/css/app.css">
   </head>
   <body style="background-image: url('{{ asset('images/background.jpg') }}');" class="marvel bg-moon-gray cover">
-    <header class="vh-10-ns flex-ns justify-between items-center pb3 pb0-ns ph3">
+    <header class="vh-10-ns flex-ns justify-between items-center pb0-ns ph3">
       <a class="db f1 link white" href="/">IM<span class="ims-black">(S)</span></a>
 
       @if (Auth::check())
-        <div style="flex-grow: 1;" class="tc tr-ns">
+        <div style="flex-grow: 1;" class="tc tr-ns pb3 pb0-ns">
           <a class="dib mr2 ph3 pv2 tc ttu tracked link ims-black ba b--ims-black" href="/artwork/create">New Artwork</a>
           @include('partials.logout-button')
         </div>
