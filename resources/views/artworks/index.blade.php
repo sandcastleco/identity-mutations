@@ -23,7 +23,7 @@
         @if($artwork->price)
           <p>{{ number_format($artwork->price, 0, '.', ',') }} USD</p>
         @else
-          <p class="mv4">Please inquire for pricing.</p>
+          <p>Please inquire for pricing.</p>
         @endif
         @if ($artwork->sold)
           <p class="db tc ttu tracked mt2 mb0 ph3 pv2 link ims-gray ba b--ims-gray f4">Sold</p>
