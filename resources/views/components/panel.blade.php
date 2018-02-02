@@ -4,7 +4,9 @@
   </div>
   <div class="panel-body w-100 ml4">
     @if(isset($wide))
-      {{ $slot }}
+      <div class="mw9 center">
+        {{ $slot }}
+      </div>
     @else
       <div class="mw6 center">
         {{ $slot }}
