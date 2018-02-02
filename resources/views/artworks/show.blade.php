@@ -7,12 +7,20 @@
       <a class="link ims-black" href="/">Gallery</a>
     @endslot
 
-    <div class="w-100 h5 bg-gray"></div>
+    @if($artwork->image)
+      <img src="{{ asset('storage/' . $artwork->image)}}">
+    @else
+      <div class="w-100 h5 bg-gray"></div>
+    @endif
 
     <div class="mw6 center">
       <h3 class="f3 mb2">{{ $artwork->title }}</h3>
-      <p class="mt0 f5 lh-copy">{{ $artwork->description }} Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <p class="mv4">{{ $artwork->price }} USD</p>
+      <p class="mt0 f5 lh-copy">{{ $artwork->description }}</p>
+      @if($artwork->price)
+        <p class="mv4">{{ number_format($artwork->price, 0, '.', ',') }}  USD</p>
+      @else
+        <p class="mv4">Please inquire for pricing.</p>
+      @endif
 
       @if (!$artwork->sold)
         <form method="POST" action="/artwork/{{ $artwork->id }}/inquiry" class="pb4">

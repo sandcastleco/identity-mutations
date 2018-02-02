@@ -4,7 +4,7 @@
 
   @include('partials.errors')
 
-  <form class="mw6 center ph3" method="POST" action="/artworks">
+  <form class="mw6 center ph3" method="POST" action="/artworks" enctype='multipart/form-data'>
 
     {{ csrf_field() }}
 
@@ -21,6 +21,11 @@
     <div class="mb3">
       <label class="db mb1" for="price">Price</label>
       <input class="db w-100 pa2 marvel ba b--ims-gray" type="number" id="price" name="price">
+    </div>
+
+    <div class="mb3">
+      <label class="db mb1" for="image">Image</label>
+      <input class="db w-100 pa2 marvel ba b--ims-gray" type="file" id="image" name="image">
     </div>
 
     <div class="mb3">

@@ -32,12 +32,16 @@ class ArtworksController extends Controller
 
     public function store()
     {
-
       $this->validate(request(), [
         'title' => 'required'
       ]);
 
       $artwork = new Artwork;
+
+      $file = request()->file('image');
+      if (isset($file)) {
+        $path = $file->store('artwork');
+      }
 
       if (!request()->has('sold')) {
         request()->merge(['sold' => 0]);
@@ -47,6 +51,7 @@ class ArtworksController extends Controller
       $artwork->description = request('description');
       $artwork->price = request('price');
       $artwork->sold = request('sold');
+      $artwork->image = $path;
       $artwork->save();
 
       return redirect('/');
@@ -66,7 +71,7 @@ class ArtworksController extends Controller
       if (!request()->has('sold')) {
         request()->merge(['sold' => 0]);
       }
-      
+
       $artwork->title = request('title');
       $artwork->description = request('description');
       $artwork->price = request('price');
