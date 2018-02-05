@@ -36,6 +36,7 @@ class ArtworksController extends Controller
     {
       $this->validate(request(), [
         'title' => 'required'
+        // 'image' => 'mimes:jpeg,jpg,png'
       ]);
 
       $artwork = new Artwork;
@@ -52,12 +53,11 @@ class ArtworksController extends Controller
       $artwork->sold = request('sold');
       if (isset($file)) {
         $filename  = 'artwork/' . time() . '.jpg';
-        $image = Image::make($file->getRealPath());
+        $image = Image::make($file);
         $image->resize(800, null, function ($constraint) {
           $constraint->aspectRatio();
           $constraint->upsize();
-        });
-        $image->save('storage/'. $filename);
+        })->save('storage/'. $filename);
         $artwork->image = $filename;
       }
       $artwork->save();
