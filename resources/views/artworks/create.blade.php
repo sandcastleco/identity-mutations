@@ -2,8 +2,6 @@
 
 @section('main')
 
-  <?php phpinfo(); ?>
-
   @include('partials.errors')
 
   <form class="mw6 center ph3" method="POST" action="/artworks" enctype='multipart/form-data'>
